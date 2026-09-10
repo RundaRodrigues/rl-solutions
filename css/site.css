@@ -456,4 +456,110 @@
 
 .card { background: var(--surface-card); }
 .faq-q { font-weight: 600; }
-.footer { background: var(--footer-bg); }
+.footer { background: var(--footer-bg); color: var(--footer-fg); }
+.footer h4, .footer a, .footer span { color: var(--footer-fg); }
+
+/* ---------- controles de tema e idioma ---------- */
+
+.utils { display: flex; align-items: center; gap: 6px; }
+
+.icon-btn {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  flex: none;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface-card);
+  color: var(--body);
+  transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease),
+              background-color var(--dur) var(--ease);
+}
+.icon-btn:hover { color: var(--ink); border-color: var(--border-strong); background: var(--surface-raise); }
+.icon-btn svg { width: 18px; height: 18px; }
+
+/* Um ícone por tema: o sol aparece no escuro, a lua no claro. */
+.icon-btn .i-sun { display: none; }
+:root[data-theme="dark"] .icon-btn .i-sun { display: block; }
+:root[data-theme="dark"] .icon-btn .i-moon { display: none; }
+
+.langs {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface-card);
+}
+.langs button {
+  min-width: 34px;
+  height: 32px;
+  padding-inline: 8px;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color var(--dur) var(--ease), background-color var(--dur) var(--ease);
+}
+.langs button:hover { color: var(--ink); background: var(--surface-raise); }
+.langs button.is-active {
+  color: var(--on-primary);
+  background: var(--primary);
+}
+
+/* No celular os controles descem para dentro do menu. */
+.nav .utils {
+  display: none;
+  justify-content: space-between;
+  margin-top: 22px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
+}
+@media (max-width: 860px) {
+  .header-cta .utils { display: none; }
+  .nav .utils { display: flex; }
+}
+
+/* ---------- correcoes pontuais do tema claro ---------- */
+
+:root[data-theme="light"] .hero::after {
+  background: radial-gradient(circle, rgba(59, 52, 116, .12) 0%, rgba(59, 52, 116, .03) 44%, transparent 68%);
+}
+:root[data-theme="light"] .hero h1 em {
+  background: linear-gradient(96deg, var(--primary) 6%, var(--accent) 94%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+:root[data-theme="light"] .cta-band::before {
+  background: radial-gradient(circle, rgba(59, 52, 116, .12) 0%, transparent 62%);
+}
+:root[data-theme="light"] .b-card { box-shadow: var(--shadow-sm); }
+:root[data-theme="light"] .b-card:hover { box-shadow: var(--shadow-md); }
+:root[data-theme="light"] .tag,
+:root[data-theme="light"] .chip { background: var(--surface-raise); }
+:root[data-theme="light"] .work-shot { background: var(--surface-raise); }
+:root[data-theme="light"] .stat strong { color: var(--primary); }
+:root[data-theme="light"] .badge-live { box-shadow: var(--shadow-sm); }
+
+/* ---------- ajustes de celular ---------- */
+
+@media (max-width: 860px) {
+  .tag, .work-body .kind, .step .n { font-size: 12px; }
+  .chip { font-size: 12.5px; }
+  .langs button { min-width: 44px; height: 42px; font-size: 12px; }
+  .icon-btn { width: 44px; height: 44px; }
+  .wa-big { width: 100%; justify-content: center; flex-wrap: wrap; }
+  /* No bento, o cartão grande não precisa de padding extra em tela pequena. */
+  .b-card, .b-card.b-lg { padding: 22px; }
+}
+
+/* O base.css tenta 12px aqui, mas este arquivo carrega depois e vence.
+   A regra precisa morar junto da definicao original de .contact-item .k. */
+@media (max-width: 860px) {
+  .contact-item .k { font-size: 12px; }
+}

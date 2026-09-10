@@ -3,23 +3,38 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>R&amp;L Solutions — Software, engenharia de qualidade e automacao com IA</title>
-<meta name="description" content="Desenvolvimento de software e sites, engenharia de qualidade, testes automatizados, agentes de IA, hospedagem, dominios de e-mail e impressao 3D.">
+<title>R&amp;L Solutions — Software, engenharia de qualidade e automação com IA</title>
+<meta name="description" content="Desenvolvimento de software e sites, engenharia de qualidade, testes automatizados, agentes de IA, hospedagem, domínios de e-mail e impressão 3D.">
 <meta name="theme-color" content="#07070c">
 <meta property="og:title" content="R&amp;L Solutions">
-<meta property="og:description" content="Software, engenharia de qualidade e automacao para quem nao pode errar em producao.">
+<meta property="og:description" content="Software, engenharia de qualidade e automação para quem não pode errar em produção.">
 <meta property="og:type" content="website">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;750&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/site.css">
+<script>
+  // Define o tema antes da primeira pintura, para não piscar branco no escuro
+  // (nem o contrário). O app.js assume daqui em diante.
+  (function () {
+    try {
+      var salvo = localStorage.getItem('wl.theme');
+      var tema = (salvo === 'light' || salvo === 'dark')
+        ? salvo
+        : (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', tema);
+    } catch (e) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script>
 </head>
 <body>
 
-<a class="skip-link" href="#main">Pular para o conteudo</a>
+<a class="skip-link" href="#main" data-b="ui.pularConteudo">Pular para o conteúdo</a>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
@@ -34,13 +49,15 @@
     <g id="i-check" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></g>
     <g id="i-phone" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></g>
     <g id="i-globe" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18Z"/></g>
+    <g id="i-sun" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></g>
+    <g id="i-moon" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.3A8.5 8.5 0 1 1 9.7 3.5a6.9 6.9 0 0 0 10.8 10.8Z"/></g>
     <g id="i-wa" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.2 3.3 5.2 4.6.7.3 1.3.5 1.8.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></g>
   </defs>
 </svg>
 
 <header class="header" data-header>
   <div class="wrap">
-    <a class="logo" href="#top" aria-label="R&amp;L Solutions, ir para o inicio">
+    <a class="logo" href="#top" aria-label="R&amp;L Solutions">
       <span class="logo-mark" aria-hidden="true">
         <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
           <rect x="3" y="3" width="58" height="58" rx="15" fill="none" stroke="currentColor" stroke-width="5"/>
@@ -50,18 +67,42 @@
       <span class="logo-word" translate="no"><b>R&amp;L</b><i>SOLUTIONS</i></span>
     </a>
 
-    <nav class="nav" id="nav-menu" data-nav-menu aria-label="Navegacao principal">
-      <a href="#servicos">Servicos</a>
-      <a href="#processo">Como trabalhamos</a>
-      <a href="#trabalhos">Trabalhos</a>
-      <a href="#faq">Duvidas</a>
-      <a class="btn btn-primary" data-battr="href:_links.whatsapp" target="_blank" rel="noopener">Falar no WhatsApp</a>
+    <nav class="nav" id="nav-menu" data-nav-menu aria-label="Navegação principal">
+      <a href="#servicos" data-b="nav.servicos">Serviços</a>
+      <a href="#processo" data-b="nav.processo">Como trabalhamos</a>
+      <a href="#trabalhos" data-b="nav.trabalhos">Trabalhos</a>
+      <a href="#faq" data-b="nav.faq">Dúvidas</a>
+      <a class="btn btn-primary" data-battr="href:_links.whatsapp" target="_blank" rel="noopener" data-b="nav.cta">Falar no WhatsApp</a>
+
+      <!-- No celular, tema e idioma vivem dentro do menu -->
+      <div class="utils">
+        <div class="langs" role="group" data-battr="aria-label:ui.idioma">
+          <button type="button" data-lang-btn="pt" aria-pressed="false" lang="pt">PT</button>
+          <button type="button" data-lang-btn="en" aria-pressed="false" lang="en">EN</button>
+          <button type="button" data-lang-btn="es" aria-pressed="false" lang="es">ES</button>
+        </div>
+        <button type="button" class="icon-btn" data-theme-toggle aria-pressed="false" aria-label="Alternar tema">
+          <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-sun"/></svg>
+          <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-moon"/></svg>
+        </button>
+      </div>
     </nav>
 
     <div class="header-cta">
-      <a class="btn btn-primary" data-battr="href:_links.whatsapp" target="_blank" rel="noopener">
+      <div class="utils">
+        <div class="langs" role="group" data-battr="aria-label:ui.idioma">
+          <button type="button" data-lang-btn="pt" aria-pressed="false" lang="pt">PT</button>
+          <button type="button" data-lang-btn="en" aria-pressed="false" lang="en">EN</button>
+          <button type="button" data-lang-btn="es" aria-pressed="false" lang="es">ES</button>
+        </div>
+        <button type="button" class="icon-btn" data-theme-toggle aria-pressed="false" aria-label="Alternar tema">
+          <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-sun"/></svg>
+          <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-moon"/></svg>
+        </button>
+      </div>
+      <a class="btn btn-primary hide-sm" data-battr="href:_links.whatsapp" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="16" height="16"><use href="#i-wa"/></svg>
-        Falar no WhatsApp
+        <span data-b="nav.cta">Falar no WhatsApp</span>
       </a>
       <button class="nav-toggle" data-nav-toggle aria-controls="nav-menu" aria-expanded="false" aria-label="Abrir menu">
         <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
@@ -96,7 +137,7 @@
   </div>
 </section>
 
-<!-- ============ SERVICOS (bento) ============ -->
+<!-- ============ SERVIÇOS ============ -->
 <section class="section" id="servicos">
   <div class="wrap">
     <div class="section-head center" data-reveal>
@@ -120,7 +161,7 @@
   </div>
 </section>
 
-<!-- ============ NUMEROS ============ -->
+<!-- ============ NÚMEROS ============ -->
 <section class="section" style="padding-block:0">
   <div class="wrap">
     <div class="stats" data-list="numeros" data-reveal>
@@ -157,7 +198,7 @@
       <h2 style="font-size:var(--fs-h3);font-weight:650;margin-block:12px 0" data-b="stack.titulo"></h2>
     </div>
     <div class="stack-grid" data-list="stack.itens" data-reveal>
-      <template><div class="stack-item"><b>{{sigla}}</b><span>{{nome}}</span></div></template>
+      <template><div class="stack-item"><b translate="no">{{sigla}}</b><span translate="no">{{nome}}</span></div></template>
     </div>
   </div>
 </section>
@@ -173,7 +214,7 @@
     <div class="grid grid-4" data-list="portfolio.itens">
       <template>
         <a class="work-card" href="{{url}}" data-reveal data-delay="{{@index}}">
-          <div class="work-shot"><img src="{{foto}}" alt="Pagina inicial do modelo {{nome}}" loading="lazy" width="720" height="450"></div>
+          <div class="work-shot"><img src="{{foto}}" alt="{{nome}}" loading="lazy" width="720" height="450"></div>
           <div class="work-body">
             <span class="kind">{{kind}}</span>
             <h3>{{nome}}</h3>
@@ -185,7 +226,7 @@
   </div>
 </section>
 
-<!-- ============ FAQ ============ -->
+<!-- ============ DÚVIDAS ============ -->
 <section class="section" id="faq">
   <div class="wrap contact-grid">
     <div data-reveal>
@@ -196,7 +237,7 @@
       <div data-list="faq.itens">
         <template>
           <div class="faq-item">
-            <button class="faq-q" aria-expanded="false">{{p}}</button>
+            <button class="faq-q" type="button" aria-expanded="false">{{p}}</button>
             <div class="faq-a"><div><p>{{r}}</p></div></div>
           </div>
         </template>
@@ -216,15 +257,15 @@
       <div class="contact-list">
         <a class="contact-item" data-battr="href:_links.whatsapp" target="_blank" rel="noopener">
           <span class="icon-badge"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-wa"/></svg></span>
-          <span><span class="k">WhatsApp</span><span class="v wa-number" data-b="contato.whatsappLabel"></span></span>
+          <span><span class="k" data-b="contatoSecao.chaves.whatsapp"></span><span class="v wa-number" data-b="contato.whatsappLabel"></span></span>
         </a>
         <a class="contact-item" data-battr="href:_links.telefone">
           <span class="icon-badge"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg></span>
-          <span><span class="k">Ligacao</span><span class="v wa-number" data-b="contato.telefoneLabel"></span></span>
+          <span><span class="k" data-b="contatoSecao.chaves.ligacao"></span><span class="v wa-number" data-b="contato.telefoneLabel"></span></span>
         </a>
         <span class="contact-item is-static">
           <span class="icon-badge"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg></span>
-          <span><span class="k">Cobertura</span><span class="v" data-b="contato.atendimento"></span></span>
+          <span><span class="k" data-b="contatoSecao.chaves.cobertura"></span><span class="v" data-b="contato.atendimento"></span></span>
         </span>
       </div>
     </div>
@@ -233,41 +274,34 @@
       <div class="form-rows">
         <div class="row-2">
           <div class="field">
-            <label for="f-nome">Seu nome</label>
-            <input id="f-nome" name="Nome" type="text" placeholder="Ex.: Maria Silva…" autocomplete="name" spellcheck="false" required>
+            <label for="f-nome" data-b="contatoSecao.form.nome"></label>
+            <input id="f-nome" name="Nome" type="text" data-battr="placeholder:contatoSecao.form.nomeHint"
+                   autocomplete="name" spellcheck="false" required>
           </div>
           <div class="field">
-            <label for="f-tel">WhatsApp</label>
-            <input id="f-tel" name="WhatsApp" type="tel" placeholder="Ex.: (11) 99999-0000" autocomplete="tel" inputmode="tel" spellcheck="false" required>
+            <label for="f-tel" data-b="contatoSecao.form.whats"></label>
+            <input id="f-tel" name="WhatsApp" type="tel" data-battr="placeholder:contatoSecao.form.whatsHint"
+                   autocomplete="tel" inputmode="tel" spellcheck="false" required>
           </div>
         </div>
         <div class="row-2">
           <div class="field">
-            <label for="f-emp">Empresa</label>
-            <input id="f-emp" name="Empresa" type="text" placeholder="Opcional" autocomplete="organization" spellcheck="false">
+            <label for="f-emp" data-b="contatoSecao.form.empresa"></label>
+            <input id="f-emp" name="Empresa" type="text" data-battr="placeholder:contatoSecao.form.empresaHint"
+                   autocomplete="organization" spellcheck="false">
           </div>
           <div class="field">
-            <label for="f-area">O que voce precisa</label>
-            <select id="f-area" name="Area" autocomplete="off">
-              <option>Desenvolvimento de software</option>
-              <option>Site ou landing page</option>
-              <option>Engenharia de qualidade</option>
-              <option>Testes automatizados</option>
-              <option>Agentes de IA e automacoes</option>
-              <option>Hospedagem de site</option>
-              <option>Dominio e e-mail corporativo</option>
-              <option>Impressao 3D</option>
-              <option>Ainda nao sei / quero conversar</option>
-            </select>
+            <label for="f-area" data-b="contatoSecao.form.area"></label>
+            <select id="f-area" name="Area" autocomplete="off" data-list-options="contatoSecao.form.areas"></select>
           </div>
         </div>
         <div class="field">
-          <label for="f-msg">Conte o contexto</label>
-          <textarea id="f-msg" name="Mensagem" placeholder="Ex.: tenho um sistema em producao com bug recorrente e nenhum teste automatizado…" autocomplete="off"></textarea>
+          <label for="f-msg" data-b="contatoSecao.form.mensagem"></label>
+          <textarea id="f-msg" name="Mensagem" data-battr="placeholder:contatoSecao.form.mensagemHint" autocomplete="off"></textarea>
         </div>
-        <button class="btn btn-primary btn-lg btn-block" type="submit">Enviar pelo WhatsApp</button>
+        <button class="btn btn-primary btn-lg btn-block" type="submit" data-b="contatoSecao.form.enviar"></button>
         <p class="form-status" data-form-status role="status" aria-live="polite"></p>
-        <p class="form-note">Abrimos o WhatsApp com sua mensagem ja escrita. Nenhum dado fica salvo no site.</p>
+        <p class="form-note" data-b="contatoSecao.form.nota"></p>
       </div>
     </form>
   </div>
@@ -303,38 +337,48 @@
           </span>
           <span class="logo-word" translate="no"><b>R&amp;L</b><i>SOLUTIONS</i></span>
         </span>
-        <p style="margin-top:16px;max-width:40ch;opacity:.7;font-size:15px" data-b="rodape.sobre"></p>
+        <p style="margin-top:16px;max-width:40ch;opacity:.75;font-size:15px" data-b="rodape.sobre"></p>
       </div>
-      <div><h4>Servicos</h4><div class="footer-links">
-        <a href="#servicos">Desenvolvimento</a>
-        <a href="#servicos">Engenharia de qualidade</a>
-        <a href="#servicos">Agentes de IA</a>
-        <a href="#servicos">Hospedagem e dominios</a>
-        <a href="#servicos">Impressao 3D</a>
-      </div></div>
-      <div><h4>Empresa</h4><div class="footer-links">
-        <a href="#processo">Como trabalhamos</a>
-        <a href="#trabalhos">Trabalhos</a>
-        <a href="#faq">Duvidas</a>
-        <a href="#contato">Contato</a>
-      </div></div>
-      <div><h4>Contato</h4><div class="footer-links">
-        <a data-battr="href:_links.whatsapp" target="_blank" rel="noopener" class="wa-number" data-b="contato.whatsappLabel"></a>
-        <span style="opacity:.7" data-b="contato.atendimento"></span>
-      </div></div>
+      <div>
+        <h4 data-b="rodape.colServicos"></h4>
+        <div class="footer-links">
+          <a href="#servicos" data-b="rodape.links.desenvolvimento"></a>
+          <a href="#servicos" data-b="rodape.links.qualidade"></a>
+          <a href="#servicos" data-b="rodape.links.ia"></a>
+          <a href="#servicos" data-b="rodape.links.infra"></a>
+          <a href="#servicos" data-b="rodape.links.tresD"></a>
+        </div>
+      </div>
+      <div>
+        <h4 data-b="rodape.colEmpresa"></h4>
+        <div class="footer-links">
+          <a href="#processo" data-b="rodape.links.processo"></a>
+          <a href="#trabalhos" data-b="rodape.links.trabalhos"></a>
+          <a href="#faq" data-b="rodape.links.faq"></a>
+          <a href="#contato" data-b="rodape.links.contato"></a>
+        </div>
+      </div>
+      <div>
+        <h4 data-b="rodape.colContato"></h4>
+        <div class="footer-links">
+          <a data-battr="href:_links.whatsapp" target="_blank" rel="noopener" class="wa-number" data-b="contato.whatsappLabel"></a>
+          <span style="opacity:.75" data-b="contato.atendimento"></span>
+        </div>
+      </div>
     </div>
     <div class="footer-bottom">
-      <span>&copy; <span data-year></span> <span data-b="nome" translate="no"></span>. Todos os direitos reservados.</span>
+      <span>&copy; <span data-year></span> <span data-b="nome" translate="no"></span>. <span data-b="rodape.direitos"></span></span>
       <span data-b="rodape.aviso"></span>
     </div>
   </div>
 </footer>
 
-<a class="wa-float" data-battr="href:_links.whatsapp" target="_blank" rel="noopener" aria-label="Falar no WhatsApp com a R&amp;L Solutions">
+<a class="wa-float" data-battr="href:_links.whatsapp, aria-label:nav.cta" target="_blank" rel="noopener">
   <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-wa"/></svg>
 </a>
 
 <script src="js/brand.js"></script>
+<script src="js/i18n.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>

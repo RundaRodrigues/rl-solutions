@@ -37,28 +37,56 @@ O monograma no cabecalho e SVG inline dentro do `index.html` (procure por
 
 ## Editar o conteudo
 
-Tudo vive em **`js/brand.js`**: servicos, processo, stack, portfolio, FAQ,
-numeros, WhatsApp e textos do rodape.
+O conteudo esta dividido em dois arquivos:
+
+| Arquivo | O que guarda |
+|---|---|
+| `js/brand.js` | o que **nao** muda com o idioma: nome, cores, WhatsApp, icones, proporcao dos cartoes, imagens do portfolio |
+| `js/i18n.js` | **todos os textos**, um bloco por idioma (`pt`, `en`, `es`) |
+
+O `i18n.js` sobrescreve o `brand.js`. Em listas a mesclagem e **posicao a
+posicao**, entao a ordem dos itens precisa bater nos dois arquivos: o item 3 de
+`servicos.itens` no `brand.js` guarda o icone, e o item 3 no `i18n.js` guarda o
+titulo e o texto daquele mesmo cartao.
 
 ```js
-window.BRAND = {
-  contato: {
-    whatsapp: '+55 11 99498-3021',   // qualquer formato; o codigo normaliza
-    mensagemWhatsapp: 'Ola! Vim pelo site…'
-  },
-  servicos: {
-    itens: [
-      { porte: 'lg', icone: 'code', titulo: '…', texto: '…', tags: ['…'] }
-    ]
-  }
-};
+// js/brand.js — nao traduz
+servicos: { itens: [ { porte: 'lg', icone: 'code' }, … ] }
+
+// js/i18n.js — traduz
+pt: { servicos: { itens: [ { titulo: 'Desenvolvimento…', texto: '…', tags: […] }, … ] } }
 ```
 
 - `porte: 'lg'` ocupa meia largura no bento; `'md'` ocupa um terco.
   O layout atual espera **2 itens `lg` seguidos de 6 itens `md`**.
 - `icone` referencia um `<g id="i-...">` do sprite SVG no topo do `index.html`.
   Icones disponiveis: `code`, `shield`, `robot`, `spark`, `browser`, `server`,
-  `mail`, `cube`, `check`, `phone`, `globe`, `wa`.
+  `mail`, `cube`, `check`, `phone`, `globe`, `sun`, `moon`, `wa`.
+
+### Adicionar um idioma
+
+1. Copie o bloco `en` inteiro em `js/i18n.js`, troque a chave pela sigla ISO
+   (`fr`, `it`, …) e traduza.
+2. Adicione o botao no `index.html`, nos **dois** blocos `.langs` (cabecalho e
+   menu do celular):
+   ```html
+   <button type="button" data-lang-btn="fr" aria-pressed="false" lang="fr">FR</button>
+   ```
+
+O idioma inicial vem de `navigator.languages` (nunca de IP) e a escolha fica
+salva em `localStorage`. O atributo `lang` do `<html>`, o `<title>` e a
+`meta description` acompanham a troca.
+
+### Tema claro e escuro
+
+O botao de sol/lua alterna e salva a preferencia em `localStorage`. Sem
+escolha salva, o site segue o `prefers-color-scheme` do sistema. Um script
+inline no `<head>` aplica o tema **antes da primeira pintura**, para nao piscar
+branco em quem usa o modo escuro.
+
+A paleta clara fica em `css/tokens.css`, no bloco `:root[data-theme="light"]`.
+Ajustes visuais pontuais (brilhos, sombras, gradiente do titulo) estao no fim
+do `css/site.css`, prefixados por `:root[data-theme="light"]`.
 
 ### Portfolio
 
@@ -95,7 +123,8 @@ index.html          marcacao + sprite de icones SVG inline
 css/tokens.css      tokens da marca (cores, tipo, espaco, forma)
 css/base.css        reset e primitivas (identico aos 4 modelos white label)
 css/site.css        componentes deste site: bento, esteira, portfolio
-js/brand.js         >>> conteudo e tema <<<
+js/brand.js         configuracao: marca, cores, contato, icones
+js/i18n.js          textos em pt, en e es
 js/app.js           motor de binding (identico aos 4 modelos white label)
 assets/             logo, favicon e capturas do portfolio
 ```

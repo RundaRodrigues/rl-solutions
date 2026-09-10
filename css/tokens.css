@@ -88,3 +88,51 @@
   --dur-slow:   .32s;
   --ease:       cubic-bezier(.2, .7, .3, 1);
 }
+
+/* ============================================================
+   TEMA CLARO
+   No fundo claro o indigo oficial da marca (#3b3474) passa em
+   contraste e vira a cor de interface — sem versão elevada.
+   ============================================================ */
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --primary:        #3b3474;
+  --primary-hover:  #2b2557;
+  --primary-soft:   rgba(59, 52, 116, .09);
+  --primary-tint:   rgba(59, 52, 116, .05);
+  --primary-line:   rgba(59, 52, 116, .22);
+  --accent:         #0f9484;
+  --accent-soft:    rgba(15, 148, 132, .11);
+  --on-primary:     #ffffff;
+
+  --ink:            #14131f;
+  --body:           #4c4a5e;
+  --muted:          #6b6980;
+  --muted-soft:     #94929f;
+
+  --canvas:         #ffffff;
+  --surface:        #f6f5fa;
+  --surface-card:   #ffffff;
+  --surface-raise:  #f1f0f7;
+  --border:         #e6e4ef;
+  --border-strong:  #d2cfe0;
+
+  --footer-bg:      #14132a;
+  --footer-fg:      #ececf5;
+  --header-bg:      rgba(255, 255, 255, 0);
+  --header-bg-scrolled: rgba(255, 255, 255, .86);
+  --focus:          #3b3474;
+
+  --shadow-sm:  0 1px 2px rgba(20, 19, 31, .05);
+  --shadow-md:  0 6px 22px rgba(20, 19, 31, .07);
+  --shadow-lg:  0 24px 60px rgba(20, 19, 31, .11);
+  --shadow-btn: 0 1px 2px rgba(20, 19, 31, .09);
+  --shadow-glow: 0 0 0 1px var(--primary-line), 0 12px 34px rgba(59, 52, 116, .20);
+}
+
+/* Antes do JS decidir o tema, segue o sistema — evita o flash branco. */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) { color-scheme: light; }
+}
