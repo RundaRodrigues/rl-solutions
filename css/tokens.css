@@ -1,0 +1,90 @@
+/* ============================================================
+   tokens.css — R&L SOLUTIONS
+   Direcao visual adaptada de awesome-design-md/linear.app:
+   canvas quase preto, UMA cor cromatica, painel com hairline,
+   tipografia densa com tracking negativo. Luxo silencioso.
+
+   O indigo da marca (#3b3474) e escuro demais para viver sobre
+   preto: aqui ele e a cor institucional (favicon, fundo claro) e
+   a versao elevada (#6f63e8) e a cor de interface.
+   ============================================================ */
+
+:root {
+  color-scheme: dark;
+
+  /* --- marca --- */
+  --brand:          #3b3474;   /* indigo oficial, uso em superficie clara */
+  --brand-deep:     #2b2557;
+
+  /* --- cor de interface (elevada para contraste sobre o escuro) --- */
+  --primary:        #6f63e8;
+  --primary-hover:  #8b82ff;
+  --primary-soft:   rgba(111, 99, 232, .15);
+  --primary-tint:   rgba(111, 99, 232, .07);
+  --primary-line:   rgba(111, 99, 232, .34);
+  --accent:         #35d6c0;
+  --accent-soft:    rgba(53, 214, 192, .14);
+  --on-primary:     #ffffff;
+
+  --ink:            #f4f4f8;
+  --body:           #a8abb8;
+  --muted:          #8b8f9d;
+  --muted-soft:     #666a78;
+
+  --canvas:         #07070c;
+  --surface:        #0c0c13;
+  --surface-card:   #101018;
+  --surface-raise:  #16161f;
+  --border:         #1f1f2b;
+  --border-strong:  #2e2e3d;
+
+  --footer-bg:      #050509;
+  --footer-fg:      #e8e8f0;
+  --header-bg:      rgba(7, 7, 12, 0);
+  --header-bg-scrolled: rgba(7, 7, 12, .78);
+  --focus:          #8b82ff;
+
+  /* --- tipografia --- */
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --fs-body:  15.5px;
+  --fs-lead:  18px;
+  --fs-h1:    clamp(2.5rem, 1.4rem + 4.6vw, 4.6rem);
+  --fs-h2:    clamp(1.9rem, 1.3rem + 2.4vw, 3rem);
+  --fs-h3:    1.1rem;
+  --fs-h4:    1rem;
+  --fs-btn:   14.5px;
+  --fw-btn:   600;
+  --tracking-display: -.038em;
+  --tracking-btn: -.005em;
+
+  /* --- forma --- */
+  --radius-sm:   8px;
+  --radius-md:   11px;
+  --radius-lg:   14px;
+  --radius-xl:   18px;
+  --radius-btn:  9px;
+  --radius-mark: 9px;
+
+  /* --- espaco --- */
+  --maxw:      1200px;
+  --gutter:    22px;
+  --gap:       16px;
+  --section-y: clamp(70px, 8vw, 116px);
+  --card-p:    26px;
+  --btn-py:    11px;
+  --btn-px:    20px;
+  --header-h:  66px;
+
+  /* --- profundidade e movimento --- */
+  --shadow-sm:  0 1px 2px rgba(0, 0, 0, .5);
+  --shadow-md:  0 10px 30px rgba(0, 0, 0, .5);
+  --shadow-lg:  0 30px 70px rgba(0, 0, 0, .66);
+  --shadow-btn: 0 1px 2px rgba(0, 0, 0, .5), 0 0 0 1px rgba(255, 255, 255, .05) inset;
+  --shadow-glow: 0 0 0 1px var(--primary-line), 0 12px 40px rgba(111, 99, 232, .22);
+  --dur:        .18s;
+  --dur-slow:   .32s;
+  --ease:       cubic-bezier(.2, .7, .3, 1);
+}
