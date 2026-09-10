@@ -412,7 +412,7 @@
 /* ---------- contato ---------- */
 
 .contact-grid { display: grid; gap: clamp(28px, 4vw, 52px); align-items: start; }
-@media (min-width: 981px) { .contact-grid { grid-template-columns: 1fr 1.05fr; } }
+@media (min-width: 981px) { .contact-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); } }
 .contact-form {
   padding: clamp(24px, 3vw, 34px);
   background: var(--surface-card);
