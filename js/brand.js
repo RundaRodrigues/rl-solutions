@@ -38,10 +38,10 @@ window.BRAND = {
      Os textos de cada item ficam em js/i18n.js, na mesma ordem.   */
   portfolio: {
     itens: [
-      { foto: 'assets/portfolio/vet.png',            url: '#contato' },
-      { foto: 'assets/portfolio/clinica.png',        url: '#contato' },
-      { foto: 'assets/portfolio/imobiliaria.png',    url: '#contato' },
-      { foto: 'assets/portfolio/transportadora.png', url: '#contato' }
+      { foto: 'assets/portfolio/vet.png',            url: 'https://rundarodrigues.github.io/vet-whitelabel/' },
+      { foto: 'assets/portfolio/clinica.png',        url: 'https://rundarodrigues.github.io/clinica-whitelabel/' },
+      { foto: 'assets/portfolio/imobiliaria.png',    url: 'https://rundarodrigues.github.io/imobiliaria-whitelabel/' },
+      { foto: 'assets/portfolio/transportadora.png', url: 'https://rundarodrigues.github.io/transportadora-whitelabel/' }
     ]
   },
 
